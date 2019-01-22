@@ -7,6 +7,7 @@ require 'json'
 require 'google_drive'
 
 class Scraper
+
   attr_accessor :city_mail, :city_name
 
   PAGE_URL  = 'http://annuaire-des-mairies.com/val-d-oise.html'
@@ -88,7 +89,7 @@ class Scraper
   end
 
   def save_as_csv
-    File.file?('db/test.csv') ? system('rm db/test.csv') : nil  # On vérifie si un fichier existe déjà, et le supprime si besoin.
+    File.file?('db/test.csv') ? system('rm db/test.csv') : nil  # On vérifie si un fichier existe déjà, et on le supprime si besoin.
     file = File.new('db/test.csv', 'a')
     @city_name.each_with_index do |name, i|
       file.puts(name + ', ' + @city_mail[i])
@@ -97,9 +98,9 @@ class Scraper
     puts 'Les données sont enregistrées en CSV, bien joué bébé.'
   end
 
-  def save_as_spreadsheet
+  def save_as_spreadsheet(spreadsheet_url)
     session = GoogleDrive::Session.from_config('config.json')
-    ws = session.spreadsheet_by_key('1qi8_JKq3tXo6KwHJdBtySblLcz6g1avzR8tWLkfCDO4').worksheets[0]
+    ws = session.spreadsheet_by_key(spreadsheet_url).worksheets[0]
 
     @city_name.each_with_index do |name, i|
       ws[i + 1, 1] = name
@@ -111,8 +112,10 @@ class Scraper
 
     ws.save
     ws.reload
-    puts 'Les données sont enregistrées en CSV, bien joué bébé.'
+    puts 'Les données sont enregistrées en Google Spreadsheet, bien joué bébé.'
   end
 
-  binding.pry
 end
+
+
+
