@@ -44,7 +44,7 @@ class Scraper
       page = Nokogiri::HTML(open(PAGE_URL2 + url)) # On combine l'url de base et les url de chaque commune.
       emails_path = page.xpath('/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]')
       name_path = page.css('small')
-      puts city_name_temp = name_path.text    # On récupère les noms et on les affiche pendant le chargement.
+      city_name_temp = name_path.text    # On récupère les noms.
       city_name_temp[0..10] = ''         # On enlève le "Commune de".
       @city_mail << emails_path.text
       @city_name << city_name_temp
@@ -72,7 +72,7 @@ class Scraper
     puts "Les données sont enregistrées dans l'array, bien joué bébé."
   end
 
-  def save_as_json(file_name)
+  def save_as_json
 
     fusion = {}
 
@@ -81,16 +81,16 @@ class Scraper
     end
 
     fusion = fusion.to_json
-    file = File.new("db/#{file_name}.json", 'w')
+    file = File.new('db/test.json', 'w')
     file.puts(fusion)
     file.close
 
     puts 'Les données sont enregistrées en JSON, bien joué bébé.'
   end
 
-  def save_as_csv(file_name)
-    File.file?("db/#{file_name}.csv") ? system("rm db/#{file_name}.csv") : nil  # On vérifie si un fichier existe déjà, et on le supprime si besoin.
-    file = File.new("db/#{file_name}.csv", 'a')
+  def save_as_csv
+    File.file?('db/test.csv') ? system('rm db/test.csv') : nil  # On vérifie si un fichier existe déjà, et on le supprime si besoin.
+    file = File.new('db/test.csv', 'a')
     @city_name.each_with_index do |name, i|
       file.puts(name + ', ' + @city_mail[i])
     end
@@ -98,9 +98,9 @@ class Scraper
     puts 'Les données sont enregistrées en CSV, bien joué bébé.'
   end
 
-  def save_as_spreadsheet(spreadsheet_url)
+  def save_as_spreadsheet
     session = GoogleDrive::Session.from_config('config.json')
-    ws = session.spreadsheet_by_key(spreadsheet_url).worksheets[0]
+    ws = session.spreadsheet_by_key('1qi8_JKq3tXo6KwHJdBtySblLcz6g1avzR8tWLkfCDO4').worksheets[0]
 
     @city_name.each_with_index do |name, i|
       ws[i + 1, 1] = name
@@ -112,10 +112,7 @@ class Scraper
 
     ws.save
     ws.reload
-    puts 'Les données sont enregistrées en Google Spreadsheet, bien joué bébé.'
+    puts 'Les données sont enregistrées en CSV, bien joué bébé.'
   end
 
 end
-
-
-

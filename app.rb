@@ -6,17 +6,18 @@ require 'views/index.rb'
 require 'app/scraper.rb'
 require 'views/done.rb'
 
-accueil
+file_name = accueil
+
 x = x_value
 if x == 1
   scrap_jason = Scraper.new
-  scrap_jason.save_as_json
+  scrap_jason.save_as_json(file_name)
 elsif x == 2
+
   scrap_csv = Scraper.new
-  scrap_csv.save_as_csv
+  scrap_csv.save_as_csv(file_name)
 elsif x == 3
   spreadsheet_url = spreadsheet
-  puts spreadsheet_url
   gogo = Scraper.new
   gogo.save_as_spreadsheet(spreadsheet_url)
 else
