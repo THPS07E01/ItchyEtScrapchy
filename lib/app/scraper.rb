@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
@@ -7,7 +9,6 @@ require 'json'
 require 'google_drive'
 
 class Scraper
-
   attr_accessor :city_mail, :city_name
 
   PAGE_URL  = 'http://annuaire-des-mairies.com/val-d-oise.html'
@@ -29,12 +30,9 @@ class Scraper
     end
     cities
   end
-  
 
   # On définit la fonction pour récupérer les infos.
-
   def get_townhall_email(urls)
-
     # On définit les arrays principaux.
     @city_mail = []     # Pour les mails
     @city_name = []     #  Pour les noms
@@ -44,8 +42,8 @@ class Scraper
       page = Nokogiri::HTML(open(PAGE_URL2 + url)) # On combine l'url de base et les url de chaque commune.
       emails_path = page.xpath('/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]')
       name_path = page.css('small')
-      puts city_name_temp = name_path.text    # On récupère les noms et on les affiche pendant le chargement.
-      city_name_temp[0..10] = ''         # On enlève le "Commune de".
+      puts city_name_temp = name_path.text # On récupère les noms et on les affiche pendant le chargement.
+      city_name_temp[0..10] = '' # On enlève le "Commune de".
       @city_mail << emails_path.text
       @city_name << city_name_temp
     end
@@ -57,11 +55,8 @@ class Scraper
     end
   end
 
-
   # On définit les methodes pour enregistrer nos données dans un fichier.
-
   def save_as_array
-
     fusion = []
 
     @city_name.each_with_index do |name, i|
@@ -73,7 +68,6 @@ class Scraper
   end
 
   def save_as_json(file_name)
-
     fusion = {}
 
     @city_name.each_with_index do |name, i|
@@ -89,7 +83,7 @@ class Scraper
   end
 
   def save_as_csv(file_name)
-    File.file?("db/#{file_name}.csv") ? system("rm db/#{file_name}.csv") : nil  # On vérifie si un fichier existe déjà, et on le supprime si besoin.
+    File.file?("db/#{file_name}.csv") ? system("rm db/#{file_name}.csv") : nil # On vérifie si un fichier existe déjà, et on le supprime si besoin.
     file = File.new("db/#{file_name}.csv", 'a')
     @city_name.each_with_index do |name, i|
       file.puts(name + ', ' + @city_mail[i])
@@ -114,8 +108,4 @@ class Scraper
     ws.reload
     puts 'Les données sont enregistrées en Google Spreadsheet, bien joué bébé.'
   end
-
 end
-
-
-
