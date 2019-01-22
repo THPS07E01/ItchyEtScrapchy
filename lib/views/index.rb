@@ -47,7 +47,7 @@ end
 
 def user_chomp
   answer = gets.chomp
-  if answer == "1"
+  if answer == "1"    # lance la condition pour le format json
     puts ''
     puts "On part sur un fichier JSON du coup !\n\n"
     puts "Comment veux-tu que ton fichier JSON se nomme ?"
@@ -63,7 +63,7 @@ def user_chomp
     puts "LET'S GO !\n\n"
     @x = 1
     return scrap_jason
-  elsif answer == "2"
+  elsif answer == "2" # lance la condition pour le format csv
     puts ''
     puts "On part sur un fichier CSV du coup !\n\n"
     puts "Comment veux-tu que ton fichier CSV se nomme ?"
@@ -79,7 +79,7 @@ def user_chomp
     puts "LET'S GO !\n\n"
     @x = 2
     return scrap_csv
-  elsif answer == "3"
+  elsif answer == "3" # lance la condition pour le format spreadsheet
   	puts "On part sur un fichier SpreadSheet !\n\n"
   	puts "Maintenant colles la partie d'url de ton SpreadSheet comme indiqué dans le motherfucking README !"
   	scrap_sc = gets.chomp
@@ -93,8 +93,8 @@ def user_chomp
     @x = 3
     @ss = scrap_sc
     return scrap_sc
-  else
-    puts "Si tu veux hacker des choses il faut m'écouter ! Bye !"
+  else                # si aucun des 3 choix proposer n'est selectionné enclenche la fermeture du programme
+    puts "\nSi tu veux hacker des choses il faut m'écouter Marcelin ! Bye !"
     return nil
   end
 end
