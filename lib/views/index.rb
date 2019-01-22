@@ -28,7 +28,7 @@ def welcome
   puts "                                                                  Assez parlé, à toi de jouer !"
   sleep(1)
   puts " "
-  puts "                                                                      Que veux tu faire?"
+  puts "                                                                      Que veux tu faire?\n\n"
   sleep(3)
   puts " "
   sleep(0.3)

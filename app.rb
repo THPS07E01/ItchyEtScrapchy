@@ -6,8 +6,8 @@ require 'views/index.rb'
 require 'app/scraper.rb'
 require 'views/done.rb'
 
-x = 0
 accueil
+x = x_value
 if x == 1
   scrap_jason = Scraper.new
   scrap_jason.save_as_json
