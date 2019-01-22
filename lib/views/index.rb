@@ -3,6 +3,10 @@ def accueil
   user_chomp
 end
 
+def x_value
+  return @x
+end
+
 def welcome
   puts `clear`
   puts "                                                   ######################################################"
@@ -53,7 +57,8 @@ def user_chomp
     puts "Ok ton nom de scrap c'est #{scrap_jason} !\n\n"
     sleep(1)
     puts "LET'S GO !\n\n"
-    return 1
+    @x = 1
+    return scrap_jason
   elsif answer == "2"
     puts ''
     puts "On part sur un fichier CSV du coup !\n\n"
@@ -68,19 +73,21 @@ def user_chomp
     puts "Ok ton nom de scrap c'est #{scrap_csv} !\n\n"
     sleep(1)
     puts "LET'S GO !\n\n"
-    return 2
+    @x = 2
+    return scrap_csv
   elsif answer == "3"
-  	 	puts "On part sur un fichier SpreadSheet !\n\n"
-  	 	puts "Maintenant colles la partie d'url de ton SpreadSheet"
-  	 	scrap_sc = gets.chomp
-  	 	while scrap_sc == nil
-  	 		puts "On en a vraiment besoin pour aller plus loin !"
-  	 		scrap_sc = gets.chomp
-  	 	end
-  	 	puts "Merci pour ta coopération !\n\n"
-  	 	sleep(1)
-  	 	puts "LET'S GO\n\n"
-      return 3
+  	puts "On part sur un fichier SpreadSheet !\n\n"
+  	puts "Maintenant colles la partie d'url de ton SpreadSheet"
+  	scrap_sc = gets.chomp
+  	while scrap_sc == nil
+  	 	puts "On en a vraiment besoin pour aller plus loin !"
+  	 	scrap_sc = gets.chomp.to_s
+  	end
+  	puts "Merci pour ta coopération !\n\n"
+  	sleep(1)
+  	puts "LET'S GO\n\n"
+    @x = 3
+    return scrap_sc
   else
     puts "Si tu veux hacker des choses il faut m'écouter ! Bye !"
     return nil
