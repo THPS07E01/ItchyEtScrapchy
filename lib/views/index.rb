@@ -11,7 +11,7 @@ def spreadsheet
   return @ss
 end
 
-def welcome
+def welcome     # Ecran de bienvenue, purement cosmètique mais hyper fonctionnel pas comme ton mixer acheté en promo chez Leclerc
   puts `clear`
   puts "                                                   ######################################################"
   puts "                                                    ##### ~~Bienvenue à toi petit scrapeur fou !~~ #####"
@@ -53,7 +53,7 @@ def user_chomp
     puts "Comment veux-tu que ton fichier JSON se nomme ?"
     scrap_jason = gets.chomp
     while scrap_jason == nil
-      puts "Gros il me faut un nom de fichier !"
+      puts "Ola mécréant ! Il me faut un nom de fichier !"
       scrap_jason = gets.chomp
     end
     scrap_jason = scrap_jason.split.join("_")
@@ -69,7 +69,7 @@ def user_chomp
     puts "Comment veux-tu que ton fichier CSV se nomme ?"
     scrap_csv = gets.chomp
     while scrap_csv == nil
-      puts "Gros il me faut un nom de fichier !"
+      puts "Ola mécréant ! Il me faut un nom de fichier !"
       scrap_csv = gets.chomp
     end
     scrap_csv = scrap_csv.split.join("_")
@@ -83,8 +83,8 @@ def user_chomp
   	puts "On part sur un fichier SpreadSheet !\n\n"
   	puts "Maintenant colles la partie d'url de ton SpreadSheet comme indiqué dans le motherfucking README !"
   	scrap_sc = gets.chomp
-  	while scrap_sc == nil
-  	 	puts "On en a vraiment besoin pour aller plus loin !"
+  	while scrap_sc == nil && scrap_sc.length > 30
+  	 	puts "On en a vraiment besoin pour aller plus loin et on va pas se laisser pieger par ton 123456789.\nEt pas la peine non plus d'essayer de nous corrompre avec le 06 de ta soeur."
   	 	scrap_sc = gets.chomp.to_s
   	end
   	puts "Merci pour ta coopération !\n\n"
