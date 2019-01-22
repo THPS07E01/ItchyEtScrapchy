@@ -39,6 +39,7 @@ Ok, maintenant que tu as hacké notre base de données je vais t'expliquer la ma
 ---
  - Mets ton terminal en plein écran (Si si tu vas voir ça en jette).
  - Tu as l'air d'être complètement prêt à hacker tout un tas de trucs, lance le programme, laisse toi guider et appelle-nous pour la correction !
+ - Petite astuce, si tu veux voir à quoi ressemble vraiment le fichier *.json* que tu as créé, colle son contenu dans ce [viewer de .json](http://jsonviewer.stack.hu/).
 
 ##### 4. Je n'ai pas de fichier *config.json*
 ---
