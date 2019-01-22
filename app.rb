@@ -2,12 +2,19 @@ require 'bundler'
 Bundler.require
 
 $:.unshift File.expand_path("./../lib", __FILE__)
-require 'app/scraper.rb'
 require 'views/index.rb'
+require 'app/scraper.rb'
 require 'views/done.rb'
 
-user_input = Scraper.new
-user_input.save_as_array
-user_input.save_as_json
-user_input.save_as_csv
-user_input.save_as_spreadsheet
+x = accueil
+if x == 1
+  scrap_jason = Scraper.new
+  scrap_jason.save_as_json
+elsif x == 2
+  scrap_csv = Scraper.new
+  scrap_csv.save_as_csv
+elsif x == 3
+else
+end
+
+#user_input.save_as_spreadsheet
