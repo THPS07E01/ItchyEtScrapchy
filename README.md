@@ -44,7 +44,7 @@ Ok, maintenant que tu as hacké notre base de données je vais t'expliquer la ma
 ---
 - Pour obtenir ton fichier *config.json* connecte toi à gmail avec l'adresse suivante : corrector3000@gmail.com
 - Je te donnerai le mot de passe sur Slack.
-- Tu vas trouver un mail avec en pièce-jointe un fichier *config.json*, télécharges-le et reporte-toi à la rubrique 1.
+- Tu vas trouver un mail avec en pièce-jointe un fichier *config.json*, télécharge-le et reporte-toi à la rubrique 1.
 
 
 
