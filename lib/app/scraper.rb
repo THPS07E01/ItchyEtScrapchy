@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
@@ -11,7 +9,7 @@ require 'google_drive'
 class Scraper
   attr_accessor :city_mail, :city_name
 
-  PAGE_URL = 'http://annuaire-des-mairies.com/val-d-oise.html'
+  PAGE_URL  = 'http://annuaire-des-mairies.com/val-d-oise.html'
   PAGE_URL2 = 'http://annuaire-des-mairies.com/'
 
   def initialize
@@ -30,13 +28,17 @@ class Scraper
     end
     cities
   end
+  
 
   # On définit la fonction pour récupérer les infos.
+
   def get_townhall_email(urls)
+
     # On définit les arrays principaux.
     @city_mail = []     # Pour les mails
     @city_name = []     #  Pour les noms
-    # On récupère les infos.
+
+    # On récupère les infos dans nos arrays.
     urls.each do |url|
       page = Nokogiri::HTML(open(PAGE_URL2 + url)) # On combine l'url de base et les url de chaque commune.
       emails_path = page.xpath('/html/body/div/main/section[2]/div/table/tbody/tr[4]/td[2]')
@@ -46,27 +48,37 @@ class Scraper
       @city_mail << emails_path.text
       @city_name << city_name_temp
     end
-    @city_mail.each_with_index do |mail, i|     
+
+    # On indique les emails non renseignés.
+    @city_mail.each_with_index do |_mail, i|
       empty_mail = "Adresse e-mail non renseignée! Ces bouseux n'ont sûrement pas Internet de toute façon!"
-      @city_mail[i].empty? ? @city_mail[i] = empty_mail : nil # Condition pour emails non renseignés
+      @city_mail[i].empty? ? @city_mail[i] = empty_mail : nil
     end
   end
 
+
   # On définit les methodes pour enregistrer nos données dans un fichier.
+
   def save_as_array
+
     fusion = []
+
     @city_name.each_with_index do |name, i|
       fusion[i] = { name => @city_mail[i] }
     end
+
     puts fusion
     puts "Les données sont enregistrées dans l'array, bien joué bébé."
   end
 
   def save_as_json
+
     fusion = {}
+
     @city_name.each_with_index do |name, i|
       fusion[name] = @city_mail[i]
     end
+
     fusion = fusion.to_json
     file = File.new('db/test.json', 'w')
     file.puts(fusion)
@@ -76,7 +88,7 @@ class Scraper
   end
 
   def save_as_csv
-    File.file?('db/test.csv') ? system('rm db/test.csv') : nil
+    File.file?('db/test.csv') ? system('rm db/test.csv') : nil  # On vérifie si un fichier existe déjà, et le supprime si besoin.
     file = File.new('db/test.csv', 'a')
     @city_name.each_with_index do |name, i|
       file.puts(name + ', ' + @city_mail[i])
