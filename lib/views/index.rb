@@ -50,15 +50,15 @@ def user_chomp
   if answer == "1"
     puts ''
     puts "On part sur un fichier JSON du coup !\n\n"
-    puts "Comment veux tu que ton scrap se nomme?"
+    puts "Comment veux-tu que ton fichier JSON se nomme ?"
     scrap_jason = gets.chomp
     while scrap_jason == nil
-      puts "Gros il me faut un nom !"
+      puts "Gros il me faut un nom de fichier !"
       scrap_jason = gets.chomp
     end
     scrap_jason = scrap_jason.split.join("_")
     puts ''
-    puts "Ok ton nom de scrap c'est #{scrap_jason} !\n\n"
+    puts "Ok ton nom de fichier c'est #{scrap_jason} !\n\n"
     sleep(1)
     puts "LET'S GO !\n\n"
     @x = 1
@@ -66,15 +66,15 @@ def user_chomp
   elsif answer == "2"
     puts ''
     puts "On part sur un fichier CSV du coup !\n\n"
-    puts "Comment veux tu que ton scrap se nomme?"
+    puts "Comment veux-tu que ton fichier CSV se nomme ?"
     scrap_csv = gets.chomp
     while scrap_csv == nil
-      puts "Gros il me faut un nom !"
+      puts "Gros il me faut un nom de fichier !"
       scrap_csv = gets.chomp
     end
     scrap_csv = scrap_csv.split.join("_")
     puts ''
-    puts "Ok ton nom de scrap c'est #{scrap_csv} !\n\n"
+    puts "Ok ton nom de fichier c'est #{scrap_csv} !\n\n"
     sleep(1)
     puts "LET'S GO !\n\n"
     @x = 2
