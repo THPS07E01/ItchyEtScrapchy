@@ -2,7 +2,7 @@ def harry
   sleep(4)
   puts `clear`
   puts "\n\n\n\n\n\n\n\n\n\n                                                   ######################################################"
-  puts "                                                    ##### ~~          MEFAIT ACCOMMPLI !        ~~ #####"
+  puts "                                                    ##### ~~          MEFAIT ACCOMPLI !         ~~ #####"
   puts "                                                     --------------------------------------------------\n\n"
   sleep(2)
   puts "````````````````````````````````````````.-+hyyhyyhyhmmdmmmmmdyssyhhhdmmmmmmNNmdhmNdhs.`````````````````````.``````...``...:+o........................."
