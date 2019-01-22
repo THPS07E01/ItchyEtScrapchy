@@ -15,7 +15,8 @@ elsif x == 2
   scrap_csv = Scraper.new
   scrap_csv.save_as_csv
 elsif x == 3
-  spreadsheet_url = accueil
+  spreadsheet_url = spreadsheet
+  puts spreadsheet_url
   gogo = Scraper.new
   gogo.save_as_spreadsheet(spreadsheet_url)
 else

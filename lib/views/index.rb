@@ -7,6 +7,10 @@ def x_value
   return @x
 end
 
+def spreadsheet
+  return @ss
+end
+
 def welcome
   puts `clear`
   puts "                                                   ######################################################"
@@ -77,7 +81,7 @@ def user_chomp
     return scrap_csv
   elsif answer == "3"
   	puts "On part sur un fichier SpreadSheet !\n\n"
-  	puts "Maintenant colles la partie d'url de ton SpreadSheet"
+  	puts "Maintenant colles la partie d'url de ton SpreadSheet comme indiqué dans le motherfucking README"
   	scrap_sc = gets.chomp
   	while scrap_sc == nil
   	 	puts "On en a vraiment besoin pour aller plus loin !"
@@ -87,6 +91,7 @@ def user_chomp
   	sleep(1)
   	puts "LET'S GO\n\n"
     @x = 3
+    @ss = scrap_sc
     return scrap_sc
   else
     puts "Si tu veux hacker des choses il faut m'écouter ! Bye !"
