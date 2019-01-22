@@ -83,7 +83,7 @@ def user_chomp
   	puts "On part sur un fichier SpreadSheet !\n\n"
   	puts "Maintenant colles la partie d'url de ton SpreadSheet comme indiqué dans le motherfucking README !"
   	scrap_sc = gets.chomp
-  	while scrap_sc == nil && scrap_sc.length > 30
+  	while scrap_sc == nil || scrap_sc.length < 30
   	 	puts "On en a vraiment besoin pour aller plus loin et on va pas se laisser pieger par ton 123456789.\nEt pas la peine non plus d'essayer de nous corrompre avec le 06 de ta soeur."
   	 	scrap_sc = gets.chomp.to_s
   	end
